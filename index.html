@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechJam2.0</title>
+    <title>TechJam</title>
 
     <!-- ========= AOS CSS ========= -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./style2.css">
 
 </head>
-<body>
+<body class="blur">
 
     <!-- ================== HEADER ================== -->
     <header class="header" id="header">
@@ -27,6 +27,9 @@
                     <img src="img/oldlogo2.png" alt="">
                 </div>
                 <ul class="nav-list">
+                  <li class="nav-item">
+                    <a href="https://pavansy6.github.io/techjam2.0/" class="nav-link about-link" style="color: rgb(228, 0, 0); font-weight: bold; font-size: large;">Techjam 2.0</a>
+                  </li>
                     <li class="nav-item"><a href="#" id="refresh">Home</a></li>
                     <li class="nav-item">
                         <a href="#" class="nav-link about-link">About</a>
@@ -60,21 +63,6 @@
     </div>
       </header>
 
-    <section class="mobile-view-section">
-        <div class="text-container">
-            <h3>Ideate. Innovate. Create</h3>
-            <h1>TechJam</h1>
-
-            <p>Unleash innovation at Tech Jam, a confluence of creativity, innovation, and cutting-edge tech.
-                Join us for an engaging exploration of the latest tech trends and become part of our flagship Tech Jam Event.</p>
-           
-            
-            
-            <!-- <p>2023 is the 2nd year of the TechJam. It is the biggest and most significant tech conference in Goregaon and South Mumbai.</p> -->
-            <!-- <button class="ctn" style="margin-right: 20px;">Learn More</button>
-            <button class="ctn">Register Here</button> -->
-        </div>
-    </section>
 
     <script>
         window.addEventListener('scroll', function() {
@@ -123,21 +111,84 @@
   </script>
 
 
-<script>
-    // JavaScript to handle smooth scrolling for Get in Touch link
-    document.querySelector('.ctn1').addEventListener('click', function (e) {
-      e.preventDefault();
-
-      const targetSection = document.querySelector('.getintouch');
-
-      if (targetSection) {
-        targetSection.scrollIntoView({
-          behavior: 'smooth'
+    <script>
+        // JavaScript to handle smooth scrolling for Get in Touch link
+        document.querySelector('.ctn1').addEventListener('click', function (e) {
+          e.preventDefault();
+        
+          const targetSection = document.querySelector('.getintouch');
+        
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
         });
-      }
-    });
   </script>
 
+    <div id="popup-container" class="popup-container" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation()"> <!-- Prevent closing when clicking inside the box -->
+      <span class="close-btn" onclick="closePopup()" style="font-size: 32px;">&times;</span>
+      <h2>Welcome to TechJam 2.0</h2>
+            <p>This website was created for Techjam 1 which was held in January 2023, Techjam 2.0 will be held on 14th January 2024, 
+              click on button to visit Techjam 2.0 website</p>
+      <button class="techjam-btn" onclick="openWebsite()">TechJam 2.0</button>
+    </div>
+  </div>
+
+  <script>
+    function getHashedIdentifier() {
+      // You can use any method to create a hashed identifier, for example:
+      // Here, I'm using a simple hash function to create an identifier from IP address and User-Agent string
+      return (window.navigator.userAgent + window.navigator.platform).hashCode(); // Sample hash function
+    }
+  
+    function showPopup() {
+      const hashedIdentifier = getHashedIdentifier();
+      const visitCount = localStorage.getItem(hashedIdentifier) || 0;
+      if (visitCount % 5 === 0) {
+        document.getElementById('popup-container').style.opacity = '1';
+        document.body.style.overflow = 'hidden'; // Disable scrolling while popup is open
+      }
+      localStorage.setItem(hashedIdentifier, Number(visitCount) + 1);
+    }
+  
+    function closePopup() {
+      var popupContainer = document.getElementById('popup-container');
+      popupContainer.style.opacity = '0';
+      setTimeout(() => {
+        popupContainer.style.display = 'none'; // Hide the popup container after the transition
+        document.body.style.overflow = 'auto'; // Enable scrolling again
+        const headerImage = document.querySelector('.logo img');
+        headerImage.style.maxWidth = '100%'; // Ensure the header image remains responsive
+      }, 300); // Wait for the transition to complete (0.3s)
+      document.body.classList.remove('hide-overflow');
+    }
+  
+    function openWebsite() {
+      window.open('https://pavansy6.github.io/techjam2.0/');
+      closePopup();
+    }
+  
+    window.onload = function() {
+      showPopup();
+    };
+  
+    // Sample hash function to create a simple hash code from a string
+    String.prototype.hashCode = function() {
+      let hash = 0;
+      if (this.length === 0) return hash;
+      for (let i = 0; i < this.length; i++) {
+        let char = this.charCodeAt(i);
+        hash = (hash << 5) - hash + char;
+        hash = hash & hash; // Convert to 32-bit integer
+      }
+      return hash;
+    };
+  </script>
+
+
+    
   <!-- ======= Events ======= -->
   <section id="services" class="services">
     <div class="container">

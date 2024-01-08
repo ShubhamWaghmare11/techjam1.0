@@ -21,6 +21,7 @@
 body{
     font-family: 'poppins',sans-serif;
     overflow-x: hidden;
+    max-width: 100%;
 }
 a{
     text-decoration: none;
@@ -103,6 +104,77 @@ p {
     /* background-image: url(img/header-bg.png); */
 
 }
+
+.popup-container {
+    display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      backdrop-filter: blur(5px); /* Background blur */
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      opacity: 0; /* Initially hidden */
+      transition: opacity 0.3s ease-in-out;
+  }
+
+  .popup-content {
+    position: relative; /* Position relative for absolute positioning of child elements */
+    width: 400px; /* Adjust the width for a rectangular shape */
+    height: 250px; /* Adjust the height for a rectangular shape */
+    background-color: #fff; /* Popup background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border: 2px solid #749BE7;
+    
+  }
+
+  
+  .show-popup .popup-container {
+    display: flex;
+  }
+
+  .show-popup .popup-content {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+
+  .popup-content h2{
+    margin-top: 20px;
+    color: #242A56; /* Heading color */
+  }
+
+  .popup-content p {
+    color: #242A56; /* Paragraph color */
+    margin-bottom: 15px; /* Add margin between paragraph and button */
+  }
+
+  .techjam-btn {
+    background-color: #749BE7; /* Button background color */
+      color: #fff; /* Button text color */
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+
+  .hide-overflow {
+    overflow-x: hidden;
+  }
+
+  .close-btn {
+    position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 28px; /* Increase font size of the close button */
+      cursor: pointer;; /* Close button color */
+  }
 
 
 .header-container{
